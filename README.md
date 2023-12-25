@@ -3,7 +3,7 @@ This is my custom Grafana dashboards that are published under https://grafana.co
 # Dashboards
 If you have an issue, would like to enhance dashboards feel free to open a PR :)
 
-## Contributing
+# Contributing
 
 We welcome and encourage contributions to this project! Please read the [Contributing guide](CONTRIBUTING.md). Also make sure to check the [Code of Conduct](CODE_OF_CONDUCT.md) and adhere to its guidelines
 
