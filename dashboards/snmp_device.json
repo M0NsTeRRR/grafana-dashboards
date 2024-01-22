@@ -1027,7 +1027,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(ifHCInOctets{instance=\"$instance\",ifName=\"$interface\"}[$__rate_interval]) unless rate(ifInOctets{instance=\"$instance\",ifName=\"$interface\"}[$__rate_interval])",
+          "expr": "rate(ifHCInOctets{instance=\"$instance\",ifName=\"$interface\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "In",
           "range": true,
@@ -1039,7 +1039,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(ifHCOutOctets{instance='$instance',ifName=~'$interface'}[$__rate_interval]) unless rate(ifOutOctets{instance=\"$instance\",ifName=~\"$interface\"}[$__rate_interval]) ",
+          "expr": "rate(ifHCOutOctets{instance='$instance',ifName=~'$interface'}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "Out",
@@ -1135,7 +1135,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 4
+            "y": 26
           },
           "id": 201,
           "maxPerRow": 4,
@@ -1165,7 +1165,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "rate(ifHCInUcastPkts{instance=\"$instance\",ifName=\"$interface\"}[$__rate_interval]) or rate(ifInUcastPkts{instance=\"$instance\",ifName=\"$interface\"}[$__rate_interval])",
+              "expr": "rate(ifHCInUcastPkts{instance=\"$instance\",ifName=\"$interface\"}[$__rate_interval])",
               "instant": false,
               "legendFormat": "In",
               "range": true,
@@ -1177,7 +1177,7 @@
                 "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
-              "expr": "rate(ifHCOutUcastPkts{instance=\"$instance\",ifName=\"$interface\"}[$__rate_interval]) or rate(ifOutUcastPkts{instance=\"$instance\",ifName=\"$interface\"}[$__rate_interval])",
+              "expr": "rate(ifHCOutUcastPkts{instance=\"$instance\",ifName=\"$interface\"}[$__rate_interval])",
               "hide": false,
               "instant": false,
               "legendFormat": "Out",
@@ -1277,7 +1277,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 5
+            "y": 27
           },
           "id": 202,
           "maxPerRow": 4,
@@ -1419,7 +1419,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 6
+            "y": 28
           },
           "id": 203,
           "maxPerRow": 4,
@@ -1561,7 +1561,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 7
+            "y": 29
           },
           "id": 502,
           "maxPerRow": 4,
@@ -1703,7 +1703,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 8
+            "y": 30
           },
           "id": 503,
           "maxPerRow": 4,
@@ -1848,6 +1848,6 @@
   "timezone": "",
   "title": "SNMP device",
   "uid": "cf6a2228-f5f6-4250-be8a-1033dfa307fb",
-  "version": 73,
+  "version": 75,
   "weekStart": ""
 }
