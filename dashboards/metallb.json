@@ -21,7 +21,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.2.3"
+      "version": "10.3.1"
     },
     {
       "type": "datasource",
@@ -91,6 +91,81 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 0,
+        "y": 1
+      },
+      "id": 229,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.3.1",
+      "title": "Total pool",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 3,
+        "y": 1
+      },
+      "id": 230,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.3.1",
+      "title": "IPv4 pool",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 6,
+        "y": 1
+      },
+      "id": 231,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.3.1",
+      "title": "IPv6 pool",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -117,15 +192,16 @@
               }
             ]
           },
-          "unit": "percentunit"
+          "unit": "percentunit",
+          "unitScale": true
         },
         "overrides": []
       },
       "gridPos": {
         "h": 7,
-        "w": 2,
+        "w": 3,
         "x": 0,
-        "y": 1
+        "y": 2
       },
       "id": 58,
       "options": {
@@ -143,7 +219,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "repeat": "pool",
       "repeatDirection": "v",
       "targets": [
@@ -153,7 +229,163 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "last_over_time(metallb_allocator_addresses_in_use_total{pool=~\"private\"}[5m]) / last_over_time(metallb_allocator_addresses_total{pool=~\"private\"}[5m])",
+          "expr": "last_over_time(metallb_allocator_addresses_in_use_total{pool=~\"private\"}[$__rate_interval]) / last_over_time(metallb_allocator_addresses_total{pool=~\"private\"}[$__rate_interval])",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "$pool",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "noValue": "<1%",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 75
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percentunit",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 3,
+        "y": 2
+      },
+      "id": 232,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "10.3.1",
+      "repeat": "pool",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "last_over_time(metallb_allocator_ipv4_addresses_in_use_total{pool=~\"private\"}[$__rate_interval]) / last_over_time(metallb_allocator_ipv4_addresses_total{pool=~\"private\"}[$__rate_interval])",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "$pool",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "noValue": "<1%",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 75
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percentunit",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 6,
+        "y": 2
+      },
+      "id": 233,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "10.3.1",
+      "repeat": "pool",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "last_over_time(metallb_allocator_ipv6_addresses_in_use_total{pool=~\"private\"}[$__rate_interval]) / last_over_time(metallb_allocator_ipv6_addresses_total{pool=~\"private\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -169,7 +401,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 108,
       "panels": [],
@@ -185,7 +417,7 @@
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 9
+        "y": 10
       },
       "id": 158,
       "options": {
@@ -197,7 +429,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "title": "Gratuitous sent",
       "type": "text"
     },
@@ -210,7 +442,7 @@
         "h": 1,
         "w": 8,
         "x": 8,
-        "y": 9
+        "y": 10
       },
       "id": 159,
       "options": {
@@ -222,7 +454,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "title": "Requests received",
       "type": "text"
     },
@@ -235,7 +467,7 @@
         "h": 1,
         "w": 8,
         "x": 16,
-        "y": 9
+        "y": 10
       },
       "id": 160,
       "options": {
@@ -247,7 +479,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "title": "Responses sent",
       "type": "text"
     },
@@ -306,7 +538,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -314,7 +547,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "id": 133,
       "options": {
@@ -338,7 +571,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "metallb_layer2_gratuitous_sent{instance=~\"$l2\"}",
+          "expr": "idelta(metallb_layer2_gratuitous_sent{instance=~\"$l2\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "{{ ip }}",
           "range": true,
@@ -390,6 +623,7 @@
               "mode": "off"
             }
           },
+          "decimals": 0,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -403,7 +637,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -411,7 +646,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 10
+        "y": 11
       },
       "id": 191,
       "options": {
@@ -435,9 +670,9 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "metallb_layer2_requests_received{instance=~\"$l2\"}",
+          "expr": "idelta(metallb_layer2_requests_received{instance=~\"$l2\"}[$__rate_interval])",
           "instant": false,
-          "legendFormat": "{{ ip }}",
+          "legendFormat": "{{ip}}",
           "range": true,
           "refId": "A"
         }
@@ -487,6 +722,7 @@
               "mode": "off"
             }
           },
+          "decimals": 0,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -500,7 +736,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -508,7 +745,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 11
       },
       "id": 192,
       "options": {
@@ -532,7 +769,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "metallb_layer2_responses_sent{instance=~\"$l2\"}",
+          "expr": "idelta(metallb_layer2_responses_sent{instance=~\"$l2\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "{{ ip }}",
           "range": true,
@@ -548,7 +785,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 39
       },
       "id": 33,
       "panels": [],
@@ -564,7 +801,7 @@
         "h": 1,
         "w": 2,
         "x": 0,
-        "y": 46
+        "y": 40
       },
       "id": 6,
       "options": {
@@ -576,7 +813,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "title": "Config loaded",
       "type": "text"
     },
@@ -589,7 +826,7 @@
         "h": 1,
         "w": 2,
         "x": 2,
-        "y": 46
+        "y": 40
       },
       "id": 7,
       "options": {
@@ -601,7 +838,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "title": "Config stale",
       "type": "text"
     },
@@ -614,7 +851,7 @@
         "h": 1,
         "w": 10,
         "x": 4,
-        "y": 46
+        "y": 40
       },
       "id": 4,
       "options": {
@@ -626,7 +863,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "title": "Client update",
       "type": "text"
     },
@@ -639,7 +876,7 @@
         "h": 1,
         "w": 10,
         "x": 14,
-        "y": 46
+        "y": 40
       },
       "id": 5,
       "options": {
@@ -651,7 +888,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "title": "Client update errors",
       "type": "text"
     },
@@ -692,7 +929,8 @@
                 "value": 1
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -700,7 +938,7 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 47
+        "y": 41
       },
       "id": 3,
       "options": {
@@ -715,10 +953,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "repeat": "metallb_client",
       "repeatDirection": "v",
       "targets": [
@@ -775,7 +1014,8 @@
                 "value": 1
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -783,7 +1023,7 @@
         "h": 7,
         "w": 2,
         "x": 2,
-        "y": 47
+        "y": 41
       },
       "id": 8,
       "options": {
@@ -798,10 +1038,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "repeat": "metallb_client",
       "repeatDirection": "v",
       "targets": [
@@ -876,7 +1117,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -884,7 +1126,7 @@
         "h": 7,
         "w": 10,
         "x": 4,
-        "y": 47
+        "y": 41
       },
       "id": 2,
       "options": {
@@ -908,7 +1150,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(metallb_k8s_client_updates_total{instance=~\"$metallb_client\"}[5m])",
+          "expr": "increase(metallb_k8s_client_updates_total{instance=~\"$metallb_client\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "$metallb_client",
           "range": true,
@@ -972,7 +1214,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -980,7 +1223,7 @@
         "h": 7,
         "w": 10,
         "x": 14,
-        "y": 47
+        "y": 41
       },
       "id": 1,
       "options": {
@@ -1004,7 +1247,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(metallb_k8s_client_update_errors_total{instance=~\"$metallb_client\"}[5m])",
+          "expr": "increase(metallb_k8s_client_update_errors_total{instance=~\"$metallb_client\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "$metallb_client",
           "range": true,
@@ -1025,7 +1268,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(pool)",
+        "definition": "label_values(metallb_allocator_addresses_in_use_total,pool)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
@@ -1033,7 +1276,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(pool)",
+          "query": "label_values(metallb_allocator_addresses_in_use_total,pool)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1094,13 +1337,13 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Metallb",
   "uid": "fb5d0c21-344b-41e1-b342-d611f32b9fe4",
-  "version": 2,
+  "version": 26,
   "weekStart": ""
 }
