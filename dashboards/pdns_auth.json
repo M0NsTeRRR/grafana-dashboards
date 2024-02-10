@@ -25,12 +25,6 @@
     },
     {
       "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
       "id": "timeseries",
       "name": "Time series",
       "version": ""
@@ -52,7 +46,7 @@
       }
     ]
   },
-  "description": "Dnsdist - https://www.powerdns.com/powerdns-dnsdist",
+  "description": "Powerdns authoritative - https://www.powerdns.com/powerdns-authoritative-server",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "gnetId": 20422,
@@ -162,7 +156,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(increase(pdns_auth_udp_queries{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_tcp_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "queries",
           "range": true,
@@ -174,7 +168,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_responses{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(increase(pdns_auth_udp_answers{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_tcp_answers{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "responses",
@@ -202,8 +196,8 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "bars",
-            "fillOpacity": 97,
+            "drawStyle": "line",
+            "fillOpacity": 8,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -241,100 +235,10 @@
               }
             ]
           },
+          "unit": "µs",
           "unitScale": true
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "< 1ms"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-green",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "1-10ms"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "green",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "10-50ms"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "orange",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "50-100ms"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-orange",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "100ms-1s"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": ">1s"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -342,7 +246,7 @@
         "x": 12,
         "y": 0
       },
-      "id": 1,
+      "id": 12,
       "options": {
         "legend": {
           "calcs": [
@@ -364,9 +268,9 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency0_1{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(pdns_auth_latency{instance=~\"$instance\"})",
           "instant": false,
-          "legendFormat": "<1ms",
+          "legendFormat": "answer question",
           "range": true,
           "refId": "A"
         },
@@ -376,10 +280,10 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency1_10{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(pdns_auth_receive_latency{instance=~\"$instance\"})",
           "hide": false,
           "instant": false,
-          "legendFormat": "1-10ms",
+          "legendFormat": "receive query",
           "range": true,
           "refId": "B"
         },
@@ -389,54 +293,15 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency10_50{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(pdns_auth_send_latency{instance=~\"$instance\"})",
           "hide": false,
           "instant": false,
-          "legendFormat": "10-50ms",
+          "legendFormat": "send answer",
           "range": true,
           "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency50_100{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "50-100ms",
-          "range": true,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency100_1000{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "100ms-1s",
-          "range": true,
-          "refId": "E"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency_slow{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": ">1s",
-          "range": true,
-          "refId": "F"
         }
       ],
-      "title": "Time to answer",
+      "title": "Latency",
       "type": "timeseries"
     },
     {
@@ -505,10 +370,12 @@
         "x": 0,
         "y": 8
       },
-      "id": 11,
+      "id": 13,
       "options": {
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -525,10 +392,9 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"TCP\"}[$__rate_interval]))",
-          "hide": false,
+          "expr": "sum(increase(pdns_auth_rd_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
-          "legendFormat": "TCP",
+          "legendFormat": "requested",
           "range": true,
           "refId": "A"
         },
@@ -538,10 +404,10 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"UDP\"}[$__rate_interval]))",
+          "expr": "sum(increase(pdns_auth_recursing_answers{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
-          "legendFormat": "UDP",
+          "legendFormat": "answers",
           "range": true,
           "refId": "B"
         },
@@ -551,10 +417,10 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"TCP (DNS over HTTPS)\"}[$__rate_interval]))",
+          "expr": "sum(increase(pdns_auth_recursing_questions{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
-          "legendFormat": "DoH",
+          "legendFormat": "questions",
           "range": true,
           "refId": "C"
         },
@@ -564,15 +430,15 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"TCP (DNS over TLS)\"}[$__rate_interval]))",
+          "expr": "sum(increase(pdns_auth_recursion_unanswered{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
-          "legendFormat": "DoT",
+          "legendFormat": "unanswered",
           "range": true,
           "refId": "D"
         }
       ],
-      "title": "Queries protocol usage",
+      "title": "Recursion queries",
       "type": "timeseries"
     },
     {
@@ -631,7 +497,6 @@
               }
             ]
           },
-          "unit": "µs",
           "unitScale": true
         },
         "overrides": []
@@ -642,7 +507,7 @@
         "x": 12,
         "y": 8
       },
-      "id": 7,
+      "id": 14,
       "options": {
         "legend": {
           "calcs": [
@@ -664,15 +529,53 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "dnsdist_latency_avg100{instance=~\"$instance\"}",
-          "hide": false,
+          "expr": "sum(increase(pdns_auth_tcp4_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "TCP - IPv4",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_tcp6_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "TCP - IPv4",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_udp4_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "UDP - IPv4",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_udp6_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "UDP - IPv6",
+          "range": true,
+          "refId": "D"
         }
       ],
-      "title": "Latency over last 100 packets",
+      "title": "Queries protocol usage",
       "type": "timeseries"
     },
     {
@@ -763,10 +666,9 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_downstream_timeouts{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
+          "expr": "sum(increase(pdns_auth_packetcache_hit{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
-          "legendFormat": "timeouts",
+          "legendFormat": "hits",
           "range": true,
           "refId": "A"
         },
@@ -776,54 +678,15 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_downstream_send_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(increase(pdns_auth_packetcache_miss{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
-          "legendFormat": "errors",
+          "legendFormat": "misses",
           "range": true,
           "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_noncompliant_responses{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "non-compliant",
-          "range": true,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_servfail_responses{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "servfail",
-          "range": true,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_server_outstanding{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "outstanding",
-          "range": true,
-          "refId": "E"
         }
       ],
-      "title": "Backend queries issues",
+      "title": "Packet cache hits vs misses",
       "type": "timeseries"
     },
     {
@@ -892,7 +755,7 @@
         "x": 12,
         "y": 16
       },
-      "id": 5,
+      "id": 15,
       "options": {
         "legend": {
           "calcs": [
@@ -914,9 +777,9 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_cache_hits{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(increase(pdns_auth_udp_in_csum_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_in_csum_errors{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
-          "legendFormat": "hits",
+          "legendFormat": "in checksum",
           "range": true,
           "refId": "A"
         },
@@ -926,15 +789,54 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_cache_misses{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(increase(pdns_auth_udp_in_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_in_errors{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
-          "legendFormat": "misses",
+          "legendFormat": "in",
           "range": true,
           "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_udp_noport_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_noport_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "noport",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_udp_recvbuf_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_recvbuf_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "recvbuf",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_udp_sndbuf_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_sndbuf_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "sndbuf",
+          "range": true,
+          "refId": "E"
         }
       ],
-      "title": "Answer cache hits vs misses",
+      "title": "UDP errors",
       "type": "timeseries"
     },
     {
@@ -993,6 +895,7 @@
               }
             ]
           },
+          "unit": "µs",
           "unitScale": true
         },
         "overrides": []
@@ -1003,7 +906,7 @@
         "x": 0,
         "y": 24
       },
-      "id": 4,
+      "id": 11,
       "options": {
         "legend": {
           "calcs": [
@@ -1025,9 +928,9 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_dyn_blocked{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(pdns_auth_cache_latency{instance=~\"$instance\"})",
           "instant": false,
-          "legendFormat": "blocked",
+          "legendFormat": "cache",
           "range": true,
           "refId": "A"
         },
@@ -1037,15 +940,15 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_dyn_block_nmg_size{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(pdns_auth_backend_latency{instance=~\"$instance\"})",
           "hide": false,
           "instant": false,
-          "legendFormat": "entries",
+          "legendFormat": "backend",
           "range": true,
           "refId": "B"
         }
       ],
-      "title": "Dynamic block",
+      "title": "Latency lookup",
       "type": "timeseries"
     },
     {
@@ -1114,7 +1017,7 @@
         "x": 12,
         "y": 24
       },
-      "id": 2,
+      "id": 10,
       "options": {
         "legend": {
           "calcs": [
@@ -1136,78 +1039,15 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_drop{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(increase(pdns_auth_incoming_notifications{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
-          "legendFormat": "drop",
+          "legendFormat": "notifications",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_nxdomain{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "nxdomain",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_refused{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "refused",
-          "range": true,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_servfail{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "servfail",
-          "range": true,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_truncated{instance=~\"$instance\"}[$__rate_interval]))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "truncated",
-          "range": true,
-          "refId": "E"
         }
       ],
-      "title": "Rule",
+      "title": "Incoming notifications",
       "type": "timeseries"
-    },
-    {
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 32
-      },
-      "id": 8,
-      "title": "Backend",
-      "type": "row"
     },
     {
       "datasource": {
@@ -1217,25 +1057,41 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "color": "dark-red",
-                  "index": 0,
-                  "text": "Down"
-                },
-                "1": {
-                  "color": "dark-green",
-                  "index": 1,
-                  "text": "Up"
-                }
-              },
-              "type": "value"
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 8,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1255,30 +1111,25 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 24,
+        "w": 12,
         "x": 0,
-        "y": 33
+        "y": 32
       },
-      "id": 9,
+      "id": 8,
       "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "10.3.1",
-      "repeat": "instance",
-      "repeatDirection": "v",
       "targets": [
         {
           "datasource": {
@@ -1286,15 +1137,426 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "dnsdist_server_status{instance=~\"$instance\"}",
+          "expr": "sum by (name) (pdns_auth_dnsupdate_changes{instance=~\"$instance\"})",
           "instant": false,
-          "legendFormat": "{{ server }}",
+          "legendFormat": "changes",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (name) (pdns_auth_dnsupdate_refused{instance=~\"$instance\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "refused",
+          "range": true,
+          "refId": "B"
         }
       ],
-      "title": "$instance",
-      "type": "stat"
+      "title": "DNS update changes vs refused",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 8,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 32
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_dnsupdate_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "instant": false,
+          "legendFormat": "queries",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_dnsupdate_answers{instance=~\"$instance\"}[$__rate_interval]))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "answers",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "DNS update queries vs answers",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 8,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 40
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_query_cache_hit{instance=~\"$instance\"}[$__rate_interval]))",
+          "instant": false,
+          "legendFormat": "hits",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(increase(pdns_auth_query_cache_miss{instance=~\"$instance\"}[$__rate_interval]))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "misses",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Query cache hits vs misses",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 8,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "responses"
+            },
+            "properties": [
+              {
+                "id": "custom.transform",
+                "value": "negative-Y"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 40
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (name) (pdns_auth_zone_cache_size{instance=~\"$instance\"})",
+          "instant": false,
+          "legendFormat": "zone",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (name) (pdns_auth_key_cache_size{instance=~\"$instance\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "key",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (name) (pdns_auth_meta_cache_size{instance=~\"$instance\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "meta",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (name) (pdns_auth_signature_cache_size{instance=~\"$instance\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "signature",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (name) (pdns_auth_query_cache_size{instance=~\"$instance\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "query",
+          "range": true,
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (name) (pdns_auth_packetcache_size{instance=~\"$instance\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "packet",
+          "range": true,
+          "refId": "F"
+        }
+      ],
+      "title": "Cache size",
+      "type": "timeseries"
     }
   ],
   "refresh": "",
@@ -1308,7 +1570,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(dnsdist_cache_hits,instance)",
+        "definition": "label_values(pdns_auth_cache_latency,instance)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
@@ -1316,7 +1578,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(dnsdist_cache_hits,instance)",
+          "query": "label_values(pdns_auth_cache_latency,instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1333,8 +1595,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Dnsdist",
-  "uid": "c8a04601-b1d2-4085-9407-98ffadd0ab27",
-  "version": 5,
+  "title": "Powerdns authoritative",
+  "uid": "f15ee619-8518-4f38-b3d2-7d41775d5658",
+  "version": 17,
   "weekStart": ""
 }
