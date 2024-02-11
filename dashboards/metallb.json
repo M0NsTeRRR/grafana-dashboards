@@ -539,6 +539,7 @@
               }
             ]
           },
+          "unit": "pps",
           "unitScale": true
         },
         "overrides": []
@@ -571,7 +572,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "idelta(metallb_layer2_gratuitous_sent{instance=~\"$l2\"}[$__rate_interval])",
+          "expr": "rate(metallb_layer2_gratuitous_sent{instance=~\"$l2\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "{{ ip }}",
           "range": true,
@@ -638,6 +639,7 @@
               }
             ]
           },
+          "unit": "pps",
           "unitScale": true
         },
         "overrides": []
@@ -670,7 +672,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "idelta(metallb_layer2_requests_received{instance=~\"$l2\"}[$__rate_interval])",
+          "expr": "rate(metallb_layer2_requests_received{instance=~\"$l2\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "{{ip}}",
           "range": true,
@@ -737,6 +739,7 @@
               }
             ]
           },
+          "unit": "pps",
           "unitScale": true
         },
         "overrides": []
@@ -769,7 +772,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "idelta(metallb_layer2_responses_sent{instance=~\"$l2\"}[$__rate_interval])",
+          "expr": "rate(metallb_layer2_responses_sent{instance=~\"$l2\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "{{ ip }}",
           "range": true,
@@ -785,7 +788,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 46
       },
       "id": 33,
       "panels": [],
@@ -801,7 +804,7 @@
         "h": 1,
         "w": 2,
         "x": 0,
-        "y": 40
+        "y": 47
       },
       "id": 6,
       "options": {
@@ -826,7 +829,7 @@
         "h": 1,
         "w": 2,
         "x": 2,
-        "y": 40
+        "y": 47
       },
       "id": 7,
       "options": {
@@ -851,7 +854,7 @@
         "h": 1,
         "w": 10,
         "x": 4,
-        "y": 40
+        "y": 47
       },
       "id": 4,
       "options": {
@@ -876,7 +879,7 @@
         "h": 1,
         "w": 10,
         "x": 14,
-        "y": 40
+        "y": 47
       },
       "id": 5,
       "options": {
@@ -938,7 +941,7 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 41
+        "y": 48
       },
       "id": 3,
       "options": {
@@ -1023,7 +1026,7 @@
         "h": 7,
         "w": 2,
         "x": 2,
-        "y": 41
+        "y": 48
       },
       "id": 8,
       "options": {
@@ -1118,6 +1121,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -1126,7 +1130,7 @@
         "h": 7,
         "w": 10,
         "x": 4,
-        "y": 41
+        "y": 48
       },
       "id": 2,
       "options": {
@@ -1150,7 +1154,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(metallb_k8s_client_updates_total{instance=~\"$metallb_client\"}[$__rate_interval])",
+          "expr": "rate(metallb_k8s_client_updates_total{instance=~\"$metallb_client\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "$metallb_client",
           "range": true,
@@ -1215,6 +1219,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -1223,7 +1228,7 @@
         "h": 7,
         "w": 10,
         "x": 14,
-        "y": 41
+        "y": 48
       },
       "id": 1,
       "options": {
@@ -1344,6 +1349,6 @@
   "timezone": "",
   "title": "Metallb",
   "uid": "fb5d0c21-344b-41e1-b342-d611f32b9fe4",
-  "version": 26,
+  "version": 4,
   "weekStart": ""
 }

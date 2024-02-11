@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.2.3"
+      "version": "10.3.1"
     },
     {
       "type": "panel",
@@ -52,8 +52,10 @@
       }
     ]
   },
+  "description": "Blackbox exporter - ICMP https://github.com/prometheus/blackbox_exporter",
   "editable": true,
   "fiscalYearStartMonth": 0,
+  "gnetId": 20338,
   "graphTooltip": 0,
   "id": null,
   "links": [],
@@ -76,7 +78,8 @@
               "type": "linear"
             }
           },
-          "fieldMinMax": false
+          "fieldMinMax": false,
+          "unitScale": true
         },
         "overrides": []
       },
@@ -116,7 +119,7 @@
           "layout": "unknown"
         },
         "tooltip": {
-          "show": true,
+          "mode": "single",
           "showColorScale": false,
           "yHistogram": true
         },
@@ -126,7 +129,7 @@
           "unit": "percentunit"
         }
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "targets": [
         {
           "datasource": {
@@ -161,7 +164,8 @@
               "type": "linear"
             }
           },
-          "fieldMinMax": false
+          "fieldMinMax": false,
+          "unitScale": true
         },
         "overrides": []
       },
@@ -197,7 +201,7 @@
           "layout": "unknown"
         },
         "tooltip": {
-          "show": true,
+          "mode": "single",
           "showColorScale": false,
           "yHistogram": true
         },
@@ -207,7 +211,7 @@
           "unit": "percentunit"
         }
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.1",
       "targets": [
         {
           "datasource": {
@@ -285,7 +289,8 @@
               }
             ]
           },
-          "unit": "s"
+          "unit": "s",
+          "unitScale": true
         },
         "overrides": [
           {
@@ -296,7 +301,7 @@
             "properties": [
               {
                 "id": "custom.axisPlacement",
-                "value": "right"
+                "value": "hidden"
               },
               {
                 "id": "unit",
@@ -409,6 +414,6 @@
   "timezone": "",
   "title": "Blackbox exporter - ICMP",
   "uid": "fcb1bdc8-fa9d-4bfd-b725-003b174473ad",
-  "version": 33,
+  "version": 2,
   "weekStart": ""
 }

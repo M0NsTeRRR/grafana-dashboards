@@ -117,6 +117,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": [
@@ -162,7 +163,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "queries",
           "range": true,
@@ -174,7 +175,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_responses{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_responses{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "responses",
@@ -241,6 +242,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": [
@@ -364,7 +366,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency0_1{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_latency0_1{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "<1ms",
           "range": true,
@@ -376,7 +378,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency1_10{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_latency1_10{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "1-10ms",
@@ -389,7 +391,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency10_50{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_latency10_50{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "10-50ms",
@@ -402,7 +404,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency50_100{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_latency50_100{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "50-100ms",
@@ -415,7 +417,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency100_1000{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_latency100_1000{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "100ms-1s",
@@ -428,7 +430,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_latency_slow{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_latency_slow{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": ">1s",
@@ -495,6 +497,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -525,7 +528,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"TCP\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"TCP\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "TCP",
@@ -538,7 +541,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"UDP\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"UDP\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "UDP",
@@ -551,7 +554,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"TCP (DNS over HTTPS)\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"TCP (DNS over HTTPS)\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "DoH",
@@ -564,7 +567,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"TCP (DNS over TLS)\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_frontend_queries{instance=~\"$instance\", proto=\"TCP (DNS over TLS)\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "DoT",
@@ -731,6 +734,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -763,7 +767,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_downstream_timeouts{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_downstream_timeouts{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "timeouts",
@@ -776,7 +780,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_downstream_send_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_downstream_send_errors{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "errors",
@@ -789,7 +793,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_noncompliant_responses{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_noncompliant_responses{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "non-compliant",
@@ -802,7 +806,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_servfail_responses{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_servfail_responses{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "servfail",
@@ -815,7 +819,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_server_outstanding{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_server_outstanding{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "outstanding",
@@ -882,6 +886,7 @@
               }
             ]
           },
+          "unit": "answer/s",
           "unitScale": true
         },
         "overrides": []
@@ -914,7 +919,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_cache_hits{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_cache_hits{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "hits",
           "range": true,
@@ -926,7 +931,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_cache_misses{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_cache_misses{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "misses",
@@ -993,6 +998,7 @@
               }
             ]
           },
+          "unit": "block/s",
           "unitScale": true
         },
         "overrides": []
@@ -1025,7 +1031,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_dyn_blocked{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_dyn_blocked{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "blocked",
           "range": true,
@@ -1037,7 +1043,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_dyn_block_nmg_size{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_dyn_block_nmg_size{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "entries",
@@ -1104,6 +1110,7 @@
               }
             ]
           },
+          "unit": "rule/s",
           "unitScale": true
         },
         "overrides": []
@@ -1136,7 +1143,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_drop{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_rule_drop{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "drop",
           "range": true,
@@ -1148,7 +1155,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_nxdomain{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_rule_nxdomain{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "nxdomain",
@@ -1161,7 +1168,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_refused{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_rule_refused{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "refused",
@@ -1174,7 +1181,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_servfail{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_rule_servfail{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "servfail",
@@ -1187,7 +1194,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(dnsdist_rule_truncated{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(dnsdist_rule_truncated{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "truncated",
@@ -1335,6 +1342,6 @@
   "timezone": "",
   "title": "Dnsdist",
   "uid": "c8a04601-b1d2-4085-9407-98ffadd0ab27",
-  "version": 5,
+  "version": 4,
   "weekStart": ""
 }

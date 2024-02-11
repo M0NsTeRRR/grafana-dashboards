@@ -49,7 +49,7 @@
   "description": "Powerdns authoritative - https://www.powerdns.com/powerdns-authoritative-server",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": 20422,
+  "gnetId": 20445,
   "graphTooltip": 0,
   "id": null,
   "links": [],
@@ -111,6 +111,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": [
@@ -156,7 +157,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_udp_queries{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_tcp_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_udp_queries{instance=~\"$instance\"}[$__rate_interval])) + sum(rate(pdns_auth_tcp_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "queries",
           "range": true,
@@ -168,7 +169,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_udp_answers{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_tcp_answers{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_udp_answers{instance=~\"$instance\"}[$__rate_interval])) + sum(rate(pdns_auth_tcp_answers{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "responses",
@@ -360,6 +361,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -392,7 +394,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_rd_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_rd_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "requested",
           "range": true,
@@ -404,7 +406,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_recursing_answers{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_recursing_answers{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "answers",
@@ -417,7 +419,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_recursing_questions{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_recursing_questions{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "questions",
@@ -430,7 +432,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_recursion_unanswered{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_recursion_unanswered{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "unanswered",
@@ -497,6 +499,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -529,7 +532,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_tcp4_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_tcp4_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "TCP - IPv4",
           "range": true,
@@ -541,7 +544,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_tcp6_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_tcp6_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "TCP - IPv4",
@@ -554,7 +557,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_udp4_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_udp4_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "UDP - IPv4",
@@ -567,7 +570,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_udp6_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_udp6_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "UDP - IPv6",
@@ -634,6 +637,7 @@
               }
             ]
           },
+          "unit": "pps",
           "unitScale": true
         },
         "overrides": []
@@ -666,7 +670,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_packetcache_hit{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_packetcache_hit{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "hits",
           "range": true,
@@ -678,7 +682,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_packetcache_miss{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_packetcache_miss{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "misses",
@@ -745,6 +749,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -777,7 +782,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_udp_in_csum_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_in_csum_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_udp_in_csum_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(rate(pdns_auth_udp6_in_csum_errors{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "in checksum",
           "range": true,
@@ -789,7 +794,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_udp_in_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_in_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_udp_in_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(rate(pdns_auth_udp6_in_errors{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "in",
@@ -802,7 +807,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_udp_noport_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_noport_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_udp_noport_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(rate(pdns_auth_udp6_noport_errors{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "noport",
@@ -815,7 +820,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_udp_recvbuf_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_recvbuf_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_udp_recvbuf_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(rate(pdns_auth_udp6_recvbuf_errors{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "recvbuf",
@@ -828,7 +833,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_udp_sndbuf_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(increase(pdns_auth_udp6_sndbuf_errors{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_udp_sndbuf_errors{instance=~\"$instance\"}[$__rate_interval])) + sum(rate(pdns_auth_udp6_sndbuf_errors{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "sndbuf",
@@ -1007,6 +1012,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -1039,7 +1045,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_incoming_notifications{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_incoming_notifications{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "notifications",
           "range": true,
@@ -1105,6 +1111,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -1216,6 +1223,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -1248,7 +1256,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_dnsupdate_queries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_dnsupdate_queries{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "queries",
           "range": true,
@@ -1260,7 +1268,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_dnsupdate_answers{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_dnsupdate_answers{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "answers",
@@ -1327,6 +1335,7 @@
               }
             ]
           },
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
@@ -1359,7 +1368,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_query_cache_hit{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_query_cache_hit{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "hits",
           "range": true,
@@ -1371,7 +1380,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(pdns_auth_query_cache_miss{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(rate(pdns_auth_query_cache_miss{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "misses",
@@ -1597,6 +1606,6 @@
   "timezone": "",
   "title": "Powerdns authoritative",
   "uid": "f15ee619-8518-4f38-b3d2-7d41775d5658",
-  "version": 17,
+  "version": 5,
   "weekStart": ""
 }
