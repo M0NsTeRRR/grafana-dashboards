@@ -64,9 +64,10 @@
       }
     ]
   },
-  "description": "Kea DHCP dashboard https://github.com/mweinelt/kea-exporter",
+  "description": "Kea exporter - https://github.com/mweinelt/kea-exporter",
   "editable": true,
   "fiscalYearStartMonth": 0,
+  "gnetId": 12688,
   "graphTooltip": 0,
   "id": null,
   "links": [],
@@ -598,7 +599,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -722,7 +724,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -858,7 +861,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -895,7 +899,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"ack\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"ack\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "ack",
@@ -908,7 +912,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"decline\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"decline\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "decline",
@@ -921,7 +925,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"discover\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"discover\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "discover",
@@ -934,7 +938,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"inform\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"inform\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "inform",
@@ -947,7 +951,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"nak\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"nak\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "nak",
@@ -960,7 +964,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"offer\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"offer\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "offer",
@@ -973,7 +977,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"parse-failed\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"parse-failed\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "parse-failed",
@@ -986,7 +990,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"drop\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"drop\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "drop",
@@ -999,7 +1003,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"release\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"release\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "release",
@@ -1012,7 +1016,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"request\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"request\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "request",
@@ -1025,7 +1029,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"unknown\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_received_total{instance=\"$host\", operation=\"unknown\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "unknown",
@@ -1083,7 +1087,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1120,7 +1125,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_sent_total{instance=\"$host\", operation=\"ack\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_sent_total{instance=\"$host\", operation=\"ack\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "ack",
@@ -1133,7 +1138,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_sent_total{instance=\"$host\", operation=\"nak\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_sent_total{instance=\"$host\", operation=\"nak\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "nak",
@@ -1146,7 +1151,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp4_packets_sent_total{instance=\"$host\", operation=\"offer\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp4_packets_sent_total{instance=\"$host\", operation=\"offer\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "offer",
@@ -1204,7 +1209,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1241,7 +1247,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"advertise\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"advertise\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "advertise",
@@ -1254,7 +1260,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"decline\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"decline\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "decline",
@@ -1267,7 +1273,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"infrequest\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"infrequest\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "infrequest",
@@ -1280,7 +1286,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"parse-failed\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"parse-failed\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "parse-failed",
@@ -1293,7 +1299,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"rebind\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"rebind\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "rebind",
@@ -1306,7 +1312,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"drop\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"drop\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "drop",
@@ -1319,7 +1325,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"release\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"release\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "release",
@@ -1332,7 +1338,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"renew\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"renew\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "renew",
@@ -1345,7 +1351,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"reply\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"reply\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "reply",
@@ -1358,7 +1364,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"request\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"request\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "request",
@@ -1371,7 +1377,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"solicit\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"solicit\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "solicit",
@@ -1384,7 +1390,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"unknown\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_received_total{instance=\"$host\", operation=\"unknown\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "unknown",
@@ -1442,7 +1448,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1479,7 +1486,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_sent_total{instance=\"$host\", operation=\"advertise\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_sent_total{instance=\"$host\", operation=\"advertise\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "advertise",
@@ -1492,7 +1499,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(kea_dhcp6_packets_sent_total{instance=\"$host\", operation=\"reply\"}[$__rate_interval]))",
+          "expr": "rate(kea_dhcp6_packets_sent_total{instance=\"$host\", operation=\"reply\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "reply",
@@ -1634,6 +1641,6 @@
   "timezone": "browser",
   "title": "Kea DHCP",
   "uid": "cdgjnsy1l6pkwc",
-  "version": 59,
+  "version": 3,
   "weekStart": ""
 }
