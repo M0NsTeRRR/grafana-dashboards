@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.3.1"
+      "version": "11.0.0"
     },
     {
       "type": "panel",
@@ -78,8 +78,7 @@
               "type": "linear"
             }
           },
-          "fieldMinMax": false,
-          "unitScale": true
+          "fieldMinMax": false
         },
         "overrides": []
       },
@@ -119,6 +118,7 @@
           "layout": "unknown"
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "single",
           "showColorScale": false,
           "yHistogram": true
@@ -129,7 +129,7 @@
           "unit": "percentunit"
         }
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -137,7 +137,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(probe_icmp_duration_seconds{phase=\"rtt\",instance=~\"$instance\"}) by (instance)",
+          "expr": "sum(probe_icmp_duration_seconds{phase=\"rtt\",job=~\"$job\",instance=~\"$instance\"}) by (instance)",
           "instant": false,
           "legendFormat": "{{instance}}",
           "range": true,
@@ -164,8 +164,7 @@
               "type": "linear"
             }
           },
-          "fieldMinMax": false,
-          "unitScale": true
+          "fieldMinMax": false
         },
         "overrides": []
       },
@@ -201,6 +200,7 @@
           "layout": "unknown"
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "single",
           "showColorScale": false,
           "yHistogram": true
@@ -211,7 +211,7 @@
           "unit": "percentunit"
         }
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -219,7 +219,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "1-probe_success{instance=~\"$instance\"}",
+          "expr": "1-probe_success{job=~\"$job\",instance=~\"$instance\"}",
           "instant": false,
           "legendFormat": "{{instance}}",
           "range": true,
@@ -289,8 +289,7 @@
               }
             ]
           },
-          "unit": "s",
-          "unitScale": true
+          "unit": "s"
         },
         "overrides": [
           {
@@ -336,6 +335,7 @@
           "showLegend": true
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "single",
           "sort": "none"
         }
@@ -350,7 +350,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "1-avg_over_time(probe_success{instance=~\"$instance\"}[$__interval])",
+          "expr": "1-avg_over_time(probe_success{job=~\"$job\",instance=~\"$instance\"}[$__interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "packet loss",
@@ -363,7 +363,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "probe_icmp_duration_seconds{phase=\"rtt\",instance=~\"$instance\"} > 0",
+          "expr": "probe_icmp_duration_seconds{phase=\"rtt\",job=~\"$job\",instance=~\"$instance\"} > 0",
           "hide": false,
           "instant": false,
           "legendFormat": "RTT",
@@ -386,7 +386,31 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(probe_icmp_duration_seconds,instance)",
+        "definition": "label_values(probe_icmp_duration_seconds,job)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "job",
+        "multi": true,
+        "name": "job",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(probe_icmp_duration_seconds,job)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
+        "definition": "label_values(probe_icmp_duration_seconds{job=~\"$job\"},instance)",
         "hide": 0,
         "includeAll": true,
         "label": "instance",
@@ -395,7 +419,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(probe_icmp_duration_seconds,instance)",
+          "query": "label_values(probe_icmp_duration_seconds{job=~\"$job\"},instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -410,6 +434,7 @@
     "from": "now-6h",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {},
   "timezone": "",
   "title": "Blackbox exporter - ICMP",
