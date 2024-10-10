@@ -229,7 +229,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "last_over_time(metallb_allocator_addresses_in_use_total{pool=~\"private\"}[$__rate_interval]) / last_over_time(metallb_allocator_addresses_total{pool=~\"private\"}[$__rate_interval])",
+          "expr": "last_over_time(metallb_allocator_addresses_in_use_total{pool=~\"$pool\"}[$__rate_interval]) / last_over_time(metallb_allocator_addresses_total{pool=~\"$pool\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -307,7 +307,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "last_over_time(metallb_allocator_ipv4_addresses_in_use_total{pool=~\"private\"}[$__rate_interval]) / last_over_time(metallb_allocator_ipv4_addresses_total{pool=~\"private\"}[$__rate_interval])",
+          "expr": "last_over_time(metallb_allocator_ipv4_addresses_in_use_total{pool=~\"$pool\"}[$__rate_interval]) / last_over_time(metallb_allocator_ipv4_addresses_total{pool=~\"$pool\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -385,7 +385,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "last_over_time(metallb_allocator_ipv6_addresses_in_use_total{pool=~\"private\"}[$__rate_interval]) / last_over_time(metallb_allocator_ipv6_addresses_total{pool=~\"private\"}[$__rate_interval])",
+          "expr": "last_over_time(metallb_allocator_ipv6_addresses_in_use_total{pool=~\"$pool\"}[$__rate_interval]) / last_over_time(metallb_allocator_ipv6_addresses_total{pool=~\"$pool\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
