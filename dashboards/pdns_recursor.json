@@ -932,7 +932,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(pdns_recursor_packetcache_entries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(pdns_recursor_packetcache_entries{instance=~\"$instance\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "entries",
@@ -1155,7 +1155,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(pdns_recursor_cache_entries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(pdns_recursor_cache_entries{instance=~\"$instance\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "entries",
@@ -1168,7 +1168,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(pdns_recursor_negcache_entries{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum(pdns_recursor_negcache_entries{instance=~\"$instance\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "negcache",
