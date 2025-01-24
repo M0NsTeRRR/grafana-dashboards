@@ -1,7 +1,8 @@
 This is my custom Grafana dashboards that are published under https://grafana.com/orgs/monsterrr
 
 # Dashboards
-If you have an issue, would like to enhance dashboards feel free to open a PR :)
+If you have an issue, would like to enhance dashboards feel free to open a PR :)  
+For some dashboards, a specific configuration is needed. You can find the proper documentation in the `docs` folder.
 
 # Contributing
 
