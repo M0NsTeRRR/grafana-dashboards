@@ -183,7 +183,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -347,7 +348,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -443,7 +445,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -518,6 +521,6 @@
   "timezone": "browser",
   "title": "Powerdns recursor API",
   "uid": "fe50ikf80o8aoc",
-  "version": 5,
+  "version": 10,
   "weekStart": ""
 }
