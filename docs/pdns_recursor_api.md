@@ -13,7 +13,7 @@ modules:
     # headers:
     #   X-API-Key: <YOUR_API_KEY>
     metrics:
-      - name: pdns_rec_api_response_by_qtype_value
+      - name: pdns_rec_api_response_by_qtype
         type: object
         path: '{[?(@.name=="response-by-qtype")].value[*]}'
         help: 'PowerDNS Recursor response by qtype value'
@@ -21,7 +21,7 @@ modules:
           name: '{ .name }'
         values:
           value: '{ .value }'
-      - name: pdns_rec_api_response_by_rcode_value
+      - name: pdns_rec_api_response_by_rcode
         type: object
         path: '{[?(@.name=="response-by-rcode")].value[*]}'
         help: 'PowerDNS Recursor response by rcode value'
@@ -29,7 +29,7 @@ modules:
           name: '{ .name }'
         values:
           value: '{ .value }'
-      - name: pdns_rec_api_response_sizes_value
+      - name: pdns_rec_api_response_sizes
         type: object
         path: '{[?(@.name=="response-sizes")].value[*]}'
         help: 'PowerDNS Recursor response sizes value'
