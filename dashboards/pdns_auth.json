@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.3.1"
+      "version": "11.6.0"
     },
     {
       "type": "datasource",
@@ -49,11 +49,9 @@
   "description": "Powerdns authoritative - https://www.powerdns.com/powerdns-authoritative-server",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": 20445,
   "graphTooltip": 0,
   "id": null,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -72,6 +70,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -102,8 +101,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -111,8 +109,7 @@
               }
             ]
           },
-          "unit": "reqps",
-          "unitScale": true
+          "unit": "reqps"
         },
         "overrides": [
           {
@@ -146,10 +143,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -197,6 +196,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -227,8 +227,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -236,8 +235,7 @@
               }
             ]
           },
-          "unit": "µs",
-          "unitScale": true
+          "unit": "µs"
         },
         "overrides": []
       },
@@ -258,10 +256,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -322,6 +322,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -352,8 +353,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -361,8 +361,7 @@
               }
             ]
           },
-          "unit": "reqps",
-          "unitScale": true
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -383,10 +382,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -460,6 +461,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -490,8 +492,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -499,8 +500,7 @@
               }
             ]
           },
-          "unit": "reqps",
-          "unitScale": true
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -521,10 +521,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -598,6 +600,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -628,8 +631,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -637,8 +639,7 @@
               }
             ]
           },
-          "unit": "pps",
-          "unitScale": true
+          "unit": "pps"
         },
         "overrides": []
       },
@@ -659,10 +660,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -710,6 +713,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -740,8 +744,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -749,8 +752,7 @@
               }
             ]
           },
-          "unit": "reqps",
-          "unitScale": true
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -771,10 +773,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -861,6 +865,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -891,8 +896,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -900,8 +904,7 @@
               }
             ]
           },
-          "unit": "µs",
-          "unitScale": true
+          "unit": "µs"
         },
         "overrides": []
       },
@@ -922,10 +925,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -973,6 +978,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -1003,8 +1009,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1012,8 +1017,7 @@
               }
             ]
           },
-          "unit": "reqps",
-          "unitScale": true
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -1034,10 +1038,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1072,6 +1078,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -1102,8 +1109,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1111,8 +1117,7 @@
               }
             ]
           },
-          "unit": "reqps",
-          "unitScale": true
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -1133,10 +1138,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1144,7 +1151,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum by (name) (pdns_auth_dnsupdate_changes{instance=~\"$instance\"})",
+          "expr": "sum(rate(pdns_auth_dnsupdate_changes{instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "changes",
           "range": true,
@@ -1156,7 +1163,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum by (name) (pdns_auth_dnsupdate_refused{instance=~\"$instance\"})",
+          "expr": "sum(rate(pdns_auth_dnsupdate_refused{instance=~\"$instance\"}[$__rate_interval]))",
           "hide": false,
           "instant": false,
           "legendFormat": "refused",
@@ -1184,6 +1191,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -1214,8 +1222,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1223,8 +1230,7 @@
               }
             ]
           },
-          "unit": "reqps",
-          "unitScale": true
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -1245,10 +1251,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1296,6 +1304,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -1326,8 +1335,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1335,8 +1343,7 @@
               }
             ]
           },
-          "unit": "reqps",
-          "unitScale": true
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -1357,10 +1364,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1408,6 +1417,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 8,
             "gradientMode": "none",
@@ -1438,16 +1448,14 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": [
           {
@@ -1481,10 +1489,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1569,7 +1579,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 39,
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": [
@@ -1580,7 +1590,6 @@
           "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(pdns_auth_cache_latency,instance)",
-        "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "instance",
@@ -1592,8 +1601,6 @@
         },
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
         "type": "query"
       }
     ]
@@ -1604,8 +1611,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Powerdns authoritative",
+  "title": "PowerDNS authoritative",
   "uid": "f15ee619-8518-4f38-b3d2-7d41775d5658",
-  "version": 5,
+  "version": 7,
   "weekStart": ""
 }

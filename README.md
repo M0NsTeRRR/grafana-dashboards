@@ -1,7 +1,8 @@
-This is my custom Grafana dashboards that are published under https://grafana.com/orgs/monsterrr
+This is my custom Grafana dashboards that are published under <https://grafana.com/orgs/monsterrr>
 
 # Dashboards
-If you have an issue, would like to enhance dashboards feel free to open a PR :)  
+
+If you have an issue, would like to enhance dashboards feel free to open a PR :)
 For some dashboards, a specific configuration is needed. You can find the proper documentation in the `docs` folder.
 
 # Contributing
@@ -16,7 +17,7 @@ See [SECURITY.md](SECURITY.md) file for details.
 
 The code is under CeCILL license.
 
-You can find all details here: https://cecill.info/licences/Licence_CeCILL_V2.1-en.html
+You can find all details here: <https://cecill.info/licences/Licence_CeCILL_V2.1-en.html>
 
 # Credits
 
@@ -24,4 +25,4 @@ Copyright © Ludovic Ortega, 2023
 
 Contributor(s):
 
--Ortega Ludovic - ludovic.ortega@adminafk.fr
+-Ortega Ludovic - <ludovic.ortega@adminafk.fr>

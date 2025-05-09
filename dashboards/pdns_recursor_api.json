@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "11.4.0"
+      "version": "11.6.0"
     },
     {
       "type": "panel",
@@ -106,11 +106,12 @@
           "values": false
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -118,7 +119,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(pdns_rec_api_response_by_qtype_value{instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "sum by (name) (rate(pdns_rec_api_response_by_qtype_value{instance=~\"$instance\"}[$__rate_interval]))",
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
@@ -175,16 +176,14 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          },
-          "unit": "reqps"
+          }
         },
         "overrides": []
       },
@@ -203,11 +202,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -215,7 +215,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(pdns_rec_api_response_by_qtype_value{instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "sum by (name) (rate(pdns_rec_api_response_by_qtype_value{instance=~\"$instance\"}[$__rate_interval]))",
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
@@ -271,11 +271,12 @@
           "values": false
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -283,7 +284,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(pdns_rec_api_response_by_rcode_value{instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "sum by (name) (rate(pdns_rec_api_response_by_rcode_value{instance=~\"$instance\"}[$__rate_interval]))",
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
@@ -340,16 +341,14 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          },
-          "unit": "reqps"
+          }
         },
         "overrides": []
       },
@@ -368,11 +367,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -380,7 +380,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(pdns_rec_api_response_by_rcode_value{instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "sum by (name) (rate(pdns_rec_api_response_by_rcode_value{instance=~\"$instance\"}[$__rate_interval]))",
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
@@ -437,16 +437,14 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          },
-          "unit": "reqps"
+          }
         },
         "overrides": []
       },
@@ -465,11 +463,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -477,7 +476,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(pdns_rec_api_response_sizes_value{instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "sum by (name) (rate(pdns_rec_api_response_sizes_value{instance=~\"$instance\"}[$__rate_interval]))",
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
@@ -487,16 +486,12 @@
       "type": "timeseries"
     }
   ],
-  "schemaVersion": 40,
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
         "definition": "label_values(pdns_rec_api_response_by_qtype_value,instance)",
         "includeAll": true,
         "multi": true,
@@ -519,8 +514,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Powerdns recursor API",
+  "title": "PowerDNS recursor API",
   "uid": "fe50ikf80o8aoc",
-  "version": 10,
+  "version": 21,
   "weekStart": ""
 }

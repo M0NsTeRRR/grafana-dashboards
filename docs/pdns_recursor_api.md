@@ -1,6 +1,6 @@
 # Configuration
 
-To get PowerDNS Recursor API statistics, you need to enable it as described [here](https://doc.powerdns.com/recursor/http-api/index.html#enabling-the-api).  
+To get PowerDNS Recursor API statistics, you need to enable it as described [here](https://doc.powerdns.com/recursor/http-api/index.html#enabling-the-api).
 To export these metrics, we will use [json_exporter](https://github.com/prometheus-community/json_exporter).
 
 Here is the configuration needed for the exporter:
