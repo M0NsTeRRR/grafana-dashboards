@@ -46,7 +46,7 @@
       }
     ]
   },
-  "description": "Powerdns authoritative - https://www.powerdns.com/powerdns-authoritative-server",
+  "description": "PowerDNS authoritative - https://www.powerdns.com/powerdns-authoritative-server",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,

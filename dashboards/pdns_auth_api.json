@@ -52,7 +52,7 @@
       }
     ]
   },
-  "description": "Powerdns authoritative API with JSON exporter - https://www.powerdns.com/powerdns-authoritative-server",
+  "description": "PowerDNS authoritative API with JSON exporter - https://www.powerdns.com/powerdns-authoritative-server",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,

@@ -52,7 +52,7 @@
       }
     ]
   },
-  "description": "Powerdns recursor API with JSON exporter - https://www.powerdns.com/powerdns-recursor",
+  "description": "PowerDNS recursor API with JSON exporter - https://www.powerdns.com/powerdns-recursor",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,

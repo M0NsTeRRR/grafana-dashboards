@@ -46,7 +46,7 @@
       }
     ]
   },
-  "description": "Powerdns recursor - https://www.powerdns.com/powerdns-recursor",
+  "description": "PowerDNS recursor - https://www.powerdns.com/powerdns-recursor",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
@@ -1745,7 +1745,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Powerdns recursor",
+  "title": "PowerDNS recursor",
   "uid": "c1e36fa9-e7fd-4051-9d7b-bc5b52593ad6",
   "version": 2,
   "weekStart": ""
