@@ -8,7 +8,7 @@ Here is the configuration needed for the exporter:
 ```yaml
 ---
 modules:
-  pdns:
+  pdns_rec:
     # If authentication is enabled
     # headers:
     #   X-API-Key: <YOUR_API_KEY>
@@ -39,6 +39,6 @@ modules:
           value: '{ .value }'
 ```
 
-To gather metrics, use this URL: `http://localhost:7979/probe?module=pdns&target=http://localhost:8082/api/v1/servers/localhost/statistics`.
+To gather metrics, use this URL: `http://localhost:7979/probe?module=pdns_rec&target=http://localhost:8082/api/v1/servers/localhost/statistics`.
 
 Don't forget to also use `relabel_configs` in your Prometheus configuration to map the `target` parameter as the `instance` label.
